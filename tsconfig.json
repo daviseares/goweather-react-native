@@ -1,0 +1,99 @@
+{
+  "compilerOptions": {
+    "plugins": [
+      {
+        "name": "typescript-styled-plugin",
+        "lint": {
+          "validProperties": [
+            "shadow-color",
+            "shadow-opacity",
+            "shadow-offset",
+            "shadow-radius",
+            "padding-horizontal",
+            "padding-vertical",
+            "margin-vertical",
+            "margin-horizontal",
+            "tint-color",
+            "aspect-ratio",
+            "elevation"
+          ]
+        }
+      }
+    ],
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react-native",
+    "lib": [
+      "dom",
+      "esnext"
+    ],
+    "moduleResolution": "node",
+    "noEmit": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "strict": true,
+    "baseUrl": "./",
+    "paths": {
+      "~/*": [
+        "src/*"
+      ],
+      "~/api": [
+        "src/api"
+      ],
+      "~/images": [
+        "src/assets/images"
+      ],
+      "~/svg": [
+        "src/assets/svg"
+      ],
+      "~/assets": [
+        "src/assets"
+      ],
+      "~/components": [
+        "src/components"
+      ],
+      "~/mappers": [
+        "src/mappers"
+      ],
+      "~/modules": [
+        "src/modules"
+      ],
+      "~/navigation": [
+        "src/navigation"
+      ],
+      "~/screens": [
+        "src/screens"
+      ],
+      "~/services": [
+        "src/services"
+      ],
+      "~/store": [
+        "src/store"
+      ],
+      "~/theme": [
+        "src/theme"
+      ],
+      "~/utils": [
+        "src/utils"
+      ],
+      "~/utils/types": [
+        "src/utils/types"
+      ]
+    },
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  },
+  "include": [
+    "src/**/*",
+    "src/App.tsx"
+  ],
+  "types": [
+    "src/utils/types/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js"
+  ],
+  "extends": "expo/tsconfig.base"
+}
