@@ -1,9 +1,9 @@
-# goweather-react-native-v2
+# goweather-react-native
 
 <h1 align="left">
     <img alt="GoWeather" title="#GoWeather" src=".github/logo.png" width="250px" />
 </h1>
- <p align="left">Aplicativo para previsão do tempo. Versão atualizada.</p>
+ <p align="left">Aplicativo para previsão do tempo.</p>
 <p align="left">
   <a href="https://github.com/daviseares/status-code/commits/master">
     <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/daviseares/goweather-react-native-v2">
