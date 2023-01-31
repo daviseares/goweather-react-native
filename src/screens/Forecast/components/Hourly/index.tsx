@@ -1,29 +1,23 @@
-import { FC } from 'react';
-import { Hourly } from '~/mappers';
+import { FlashList } from '~/modules';
 import { formatTemperature, formatTime } from '~/utils';
-
-// styles
-import {
-  Card,
-  Description,
-  Hour,
-  Icon,
-  List,
-  Temperature,
-  Wrapper,
-} from './styles';
+import { Hourly } from '~/utils/types/weather';
+import { Card, Description, Hour, Icon, Temperature, Wrapper } from './styles';
 
 type Props = {
   forecastList: Hourly[];
 };
 
-const HourlyComponent: FC<Props> = ({ forecastList }) => {
+const HourlyComponent = ({ forecastList }: Props) => {
   return (
     <Wrapper>
-      <List
+      <FlashList
+        horizontal
+        showsHorizontalScrollIndicator={false}
         data={forecastList}
         keyExtractor={(_, index) => index.toString()}
-        renderItem={({ item }: { item: any }) => (
+        estimatedItemSize={115}
+        contentContainerStyle={{ paddingLeft: 25 }}
+        renderItem={({ item }) => (
           <Card>
             <Hour>{formatTime(item.dt)}</Hour>
             <Icon

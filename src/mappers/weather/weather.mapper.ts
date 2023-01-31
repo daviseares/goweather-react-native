@@ -1,4 +1,5 @@
-import { IWeatherMapper, WeatherApiParams } from './weather.mapper.interface';
+import { WeatherApiParams } from '~/utils/types/weather';
+import { IWeatherMapper } from './weather.mapper.interface';
 
 export default class WeatherMapper implements IWeatherMapper {
   mapWeatherApiParams = ({

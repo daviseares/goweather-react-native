@@ -1,7 +1,6 @@
-import { FC } from 'react';
 import { View } from 'react-native';
-import { Weather } from '~/mappers';
 import { formatDate, formatTemperature } from '~/utils';
+import { Weather } from '~/utils/types/weather';
 import {
   Address,
   Card,
@@ -18,7 +17,7 @@ type Props = {
   info: Weather;
 };
 
-const WeatherComponent: FC<Props> = ({ info }) => {
+const WeatherComponent = ({ info }: Props) => {
   const { dt, name, main, weather } = info;
 
   return (

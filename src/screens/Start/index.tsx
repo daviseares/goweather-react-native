@@ -1,28 +1,33 @@
 import { useEffect } from 'react';
-import { isEmpty } from '~/modules';
-import { useStores } from '~/stores';
-import { Routes, useNavigation } from '~/utils';
-import Start from './Start';
+import { View } from 'react-native';
+import { LogoImage, SunImage } from '~/assets';
+import { Button } from '~/components';
+import useStart from './hooks/useStart';
+import { Footer, Header, Logo, Sun, Title, Wrapper } from './styles';
 
-const StartContainer: React.FC = () => {
-  const { locationStore } = useStores();
-  const navigation = useNavigation();
-
-  const handleNavigate = () => {
-    if (!isEmpty(locationStore.location)) {
-      navigation.navigate(Routes.FORECAST);
-    }
-  };
-
-  const loadPermissions = async () => {
-    await locationStore.getLocation();
-  };
+const Start = () => {
+  const { handleNavigate, loadPermissions } = useStart();
 
   useEffect(() => {
     loadPermissions();
   }, []);
 
-  return <Start handleNavigate={handleNavigate} />;
+  return (
+    <Wrapper>
+      <Header>
+        <Logo source={LogoImage} />
+      </Header>
+      <View>
+        <Sun source={SunImage} />
+        <Title>Tenha a previsão do tempo na palma da sua mão.</Title>
+      </View>
+      <Footer>
+        <Button icon="log-in" onPress={handleNavigate}>
+          EXPLORAR
+        </Button>
+      </Footer>
+    </Wrapper>
+  );
 };
 
-export default StartContainer;
+export default Start;
