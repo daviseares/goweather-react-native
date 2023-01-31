@@ -1,46 +1,41 @@
-import React, { FC, useEffect, useState } from 'react';
-import { Geolocation, isEmpty } from '~/modules';
-import { useStores } from '~/stores';
-import Forecast from './Forecast';
+import { useEffect } from 'react';
+import { Button, Loading } from '~/components';
 
-const ForecastContainer: FC = () => {
-  const { weatherStore, locationStore } = useStores();
-  const { weather, hourly } = weatherStore;
-  const [isLoading, setIsLoading] = useState(false);
-  const [loadingMessage, setLoadingMessage] = useState('Carregando...');
+import ForecastDetails from './components/ForecastDetails';
+import HourlyComponent from './components/Hourly';
+import WeatherComponent from './components/Weather';
+import useForecast from './hooks/useForecast';
+import { ChildrenWrapper, Wrapper } from './styles';
 
-  const getWeather = async () => {
-    try {
-      await weatherStore.getWeather(locationStore.location);
-      await weatherStore.getHourly(locationStore.location);
-    } catch ({ message }) {
-      console.error(message);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handleUpdate = async () => {
-    setIsLoading(true);
-    await Geolocation.getCurrentPositionAsync({});
-    await getWeather();
-    setLoadingMessage('Atualizando...');
-  };
+const Forecast = () => {
+  const {
+    getWeather,
+    hasWeather,
+    weather,
+    isLoading,
+    loadingMessage,
+    handleUpdate,
+    hourly,
+  } = useForecast();
 
   useEffect(() => {
     getWeather();
   }, []);
 
-  return (
-    <Forecast
-      hasWeather={!isEmpty(weather) && !isEmpty(hourly)}
-      hourlyWeather={hourly}
-      currentWeather={weather}
-      loadingMessage={loadingMessage}
-      isLoading={isLoading}
-      handleUpdate={handleUpdate}
-    />
-  );
+  if (hasWeather && !isLoading) {
+    return (
+      <Wrapper>
+        <ChildrenWrapper>
+          <WeatherComponent info={weather} />
+          <Button onPress={handleUpdate}>Atualizar</Button>
+          <HourlyComponent forecastList={hourly} />
+          <ForecastDetails details={weather} />
+        </ChildrenWrapper>
+      </Wrapper>
+    );
+  }
+
+  return <Loading>{loadingMessage}</Loading>;
 };
 
-export default ForecastContainer;
+export default Forecast;
