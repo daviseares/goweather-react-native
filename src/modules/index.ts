@@ -31,3 +31,5 @@ export { isEmpty } from 'lodash';
 export { type RectButtonProperties } from 'react-native-gesture-handler';
 
 export { default as FeatherIcons } from '@expo/vector-icons/Feather';
+
+export { FlashList } from '@shopify/flash-list';

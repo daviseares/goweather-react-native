@@ -1,14 +1,13 @@
-import { FC } from 'react';
 import { View } from 'react-native';
-import { ForecastDetails } from '~/mappers';
 import { formatHumidity, formatTemperature, formatTime } from '~/utils';
+import { ForecastDetails } from '~/utils/types/forecast';
 import { Card, Down, Title, Top, Value, Wrapper } from './styles';
 
 type Props = {
   details: ForecastDetails;
 };
 
-const ForecastDetailsComponent: FC<Props> = ({ details }) => {
+const ForecastDetailsComponent = ({ details }: Props) => {
   const { feels_like, humidity } = details.main;
   const { sunrise, sunset } = details.sys;
 

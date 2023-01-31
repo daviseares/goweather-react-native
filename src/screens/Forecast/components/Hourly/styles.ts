@@ -6,18 +6,13 @@ export const Wrapper = styled.View`
   margin-top: 20px;
 `;
 
-export const List = styled.FlatList.attrs({
-  horizontal: true,
-  showsHorizontalScrollIndicator: false,
-  contentContainerStyle: { marginLeft: 25 },
-})``;
-
 export const Card = styled.View`
   width: 100px;
   border-radius: 5px;
   background: ${colors.card};
   padding: 10px 0px;
   margin-right: 15px;
+  height: 170px;
 
   align-items: center;
   justify-content: space-between;

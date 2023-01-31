@@ -1,11 +1,10 @@
-import React from 'react';
 import { Message, Spinner, Wrapper } from './styles';
 
 type Props = {
   children: string;
 };
 
-const Loading: React.FC<Props> = ({ children }) => (
+const Loading = ({ children }: Props) => (
   <Wrapper>
     <Spinner animating />
     <Message>{children}</Message>
