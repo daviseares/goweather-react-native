@@ -1,5 +1,5 @@
-import { Hourly, Weather, WeatherApiParams } from '~/mappers';
 import { ResponseError } from '~/utils';
+import { Hourly, Weather, WeatherApiParams } from '~/utils/types/weather';
 import request from '../request';
 import { IWeatherApi } from './weather.api.interface';
 

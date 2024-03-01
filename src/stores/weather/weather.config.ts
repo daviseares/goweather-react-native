@@ -1,4 +1,4 @@
-import { Hourly, Weather } from '~/mappers';
+import { Hourly, Weather } from '~/utils/types/weather';
 
 export interface IWeatherStore {
   hourly: Hourly[];
